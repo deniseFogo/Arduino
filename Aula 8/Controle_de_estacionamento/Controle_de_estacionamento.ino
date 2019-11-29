@@ -16,13 +16,17 @@ void setup() {
 
 void loop() {
   distancia = sonar.read();
-  Serial.println(distancia);
-  Serial.print(""); // limpar para próxima leitura, vazio, não escreve nada
-  delay (500);
-
-  if (distancia < 10 digitalRead(2) == HIGH) {
-    digitalWrite (3, HIGH);
+  if (distancia > 10) {
+    digitalWrite(3, HIGH);
+    digitalWrite (2, LOW);
+    Serial.println("LIVRE");
+    Serial.print(""); // limpar para próxima leitura, vazio, não escreve nada
   } else {
-    digitalWrite (3, LOW);
+    digitalWrite(3, LOW);
+    digitalWrite (2, HIGH);
+    Serial.println("OCUPADA");
+    Serial.print("");
   }
+
+  delay (500);
 }
